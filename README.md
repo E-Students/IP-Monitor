@@ -1,12 +1,18 @@
 # IP-Monitor
 
 ##Indroduzione
+
 ##Architettura
+
 ##Funzioni IP-MONITOR
+
 ##Requisiti Software
+
 ##Linguaggi Usati
+
 ##Team
-1.Nicola Zanda (CTO)
-2.Carlotta Siddi
-3.Valentina Serrau
-4.Emanuele Cossu
+1.Addis Gianluca (CTO)
+2.Nicola Zanda (PM)
+3.Carlotta Siddi (PM)
+4.Valentina Serrau (Developer)
+5.Cossu Emanuele (Developer)
