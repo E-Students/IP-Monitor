@@ -1,3 +1,4 @@
+//SERRAU VALENTINA & NICOLA ZANDA
 <!DOCTYPE html>
 <html>
   <head>
@@ -60,7 +61,7 @@
             {
 	      echo $image_name;
 	      
-		$query1=mysql_query("Insert into CAMPIBLOBLONG set CODICE,FOTO=LOAD_FILE('$image_name'),DATA=now();",$connessione)or die("Errore 4".mysql_error());
+		$query1=mysql_query("INSERT INTO CAMPIBLOBLONG SET FOTO=LOAD_FILE('$image_name'),DATA=now();",$connessione)or die("Errore 4".mysql_error());
 		
 	    }
 	    mysql_close($connessione);
