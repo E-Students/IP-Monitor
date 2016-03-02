@@ -1,7 +1,7 @@
-//SERRAU VALENTINA & NICOLA ZANDA
 <!DOCTYPE html>
-<html>
+<html >
   <head>
+  <meta http-equiv="refresh" content="3" />	
     <title> Inserimento nel database</title>
       <style type="text/css">
          body
@@ -24,48 +24,21 @@
       </style>
 
    </head>
-  <body>   
-	    <FORM METHOD="POST" ACTION="http://localhost/~compito/gruppo2.php" enctype="multipart/form-data">
-            inserisci fotogramma
-            <input type="file" name="immagine"/> 
-            <input type="reset" name="RESET" />
-            <input type="submit" name="INVIO" />
-	  </FORM> 
-        <table>
-	<?php	
-	
-	if(isset($_POST['INVIO'])){
-	  //  echo "sono qui";
-	    $connessione=mysql_connect("172.16.3.7","root","")or die (mysql_error());
-	//   print_r($_FILES);
-	    $image_name=$_FILES['immagine']['name'];
-	 //   echo $image_name;
-	    
-	    $image_tmp=$_FILES['immagine']['tmp_name'];
-	    $dirUpload='/home2/compito/public_html/gruppo2/';
-	    $image_name=$dirUpload.$image_name;
-	    if (is_uploaded_file($image_tmp))
-	    { 
-	      echo "uploaded ok";
-	      if (move_uploaded_file($image_tmp,$image_name))
-	      {
-		  echo "file trasferito con successo";
-	      }
-	      else 
-		  echo "file non trasferito";
-	    }
-	    else 
-		echo("No File Uploaded");
-            $ris2=mysql_query("use magazzino;",$connessione) or die("Errore 1:".mysql_error());
-            if(isset($image_name))
-            {
-	      echo $image_name;
-	      
-		$query1=mysql_query("INSERT INTO CAMPIBLOBLONG SET FOTO=LOAD_FILE('$image_name'),DATA=now();",$connessione)or die("Errore 4".mysql_error());
-		
-	    }
-	    mysql_close($connessione);
-	    }
+  <body>  
+     <table>
+    <?php
+    
+	    echo exec("sh prova.sh");
+	    //$image_name="/home2/compito/cesare.bmp";
+            //echo $image_name;
+	    $connessione1=mysql_connect("172.16.3.2","ipmonitor","pswipmonitor")or die (mysql_error()); //fornita dalla frame server
+            $ris3=mysql_query("use FrameServer;",$connessione1) or die("Errore 1:".mysql_error()); //fornito dall frame server
+	    $Content=file_get_contents('cesare.bmp')or die ("Errore");
+	    $Content = addslashes($Content);
+
+	   $query= "INSERT INTO Fotogramma SET Foto='$Content',Giorno= now();";
+	   $query2=mysql_query($query,$connessione1)or die("Errore 4 ".$query."--".mysql_error());//fornito dall frame server
+	    mysql_close($connessione1);
       ?>
       </table>
     </body>
